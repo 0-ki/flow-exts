@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Flow 확장자 차단</title>
+    <script src="https://code.jquery.com/jquery-3.4.0.min.js"></script>
+    <link rel="stylesheet" href="https://unpkg.com/mvp.css">
+    <style>
+        .fixed-div {
+            padding-right: 10px;
+        }
+        input:invalid {
+            border: 3px solid red;
+        }
+    </style>
+</head>
+<body>
+<div class="container" style="padding:0;">
+    <header style="padding:0;">
+        <h1>파일 확장자 차단</h1>
+        <h3>파일 확장자에 따라 특정 형식의 파일을 첨부하거나 전송하지 못하도록 제한합니다.</h3>
+    </header>
+    <main id="content" style="padding:0;">
+        <form name="extensionForm" id="form-extension" class="form-extension" method="post">
+            <input type="text" style="display:none;" />
+            <div>
+                <span>고정 확장자</span>
+                <ul id="fixed-area" style="display: inline-flex;"></ul>
+            </div>
+
+            <div style="display: inline-flex; align-items: baseline;">
+                <span>커스텀 확장자</span>
+                <input id="customInput" type="text" placeholder="확장자 입력" value="" maxlength="20" pattern="[A-Za-z]+" onkeydown="javascript:if(event.keyCode == 13){addCustomExts(event);}">
+                <button id="customAdd" type="button" style="padding: 0;">+추가</button>
+            </div>
+            <div id="custom-area" style="min-width: 500px;width:auto;height: auto;min-height: 200px;border: 2px solid;display: flex;flex-direction: row;flex-wrap: wrap;align-content: flex-start;">
+                <div style="border: 2px solid;border-radius: 7px;margin-right: 90%;">
+                    <span id="customCnt">1</span>/<span id="customMax" style="margin-right: 90%;">200</span>
+                </div>
+            </div>
+        </form>
+    </main>
+</div>
+<script src="js/index.js"></script>
+</body>
+</html>
